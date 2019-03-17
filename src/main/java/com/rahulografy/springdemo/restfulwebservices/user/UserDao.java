@@ -21,32 +21,34 @@ public class UserDao {
 		return listUsers;
 	}
 
-	public boolean createUser(User userNew) {
+	public User createUser(User userNew) {
 
 		if (userNew == null)
-			return false;
+			return null;
 
 		for (User user : listUsers) {
 
 			if (user.getId().equals(userNew.getId()))
-				return false;
+				return null;
 		}
 
-		return listUsers.add(userNew);
+		listUsers.add(userNew);
+		return userNew;
 	}
 
-	public boolean createUser(String id, String name, String address) {
+	public User createUser(String id, String name, String address) {
 
 		if (id == null || name == null || address == null)
-			return false;
+			return null;
 
 		for (User user : listUsers) {
 
 			if (user.getId().equals(id))
-				return false;
+				return null;
 		}
 
-		return listUsers.add(new User(id, name, address));
+		listUsers.add(new User(id, name, address));
+		return listUsers.get(listUsers.size() - 1);
 	}
 
 	public User getUser(String id) {
