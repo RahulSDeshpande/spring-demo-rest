@@ -83,4 +83,9 @@ public class UserController {
 	public String goodMorning(@RequestHeader(name = "Accept-Language", required = false) Locale locale) {
 		return messageSource.getMessage("good.morning", null, LocaleContextHolder.getLocale());
 	}
+	
+	@GetMapping(path = "/goodMorningGeneric")
+	public String goodMorning() {
+		return messageSource.getMessage("good.morning", null, LocaleContextHolder.getLocale());
+	}
 }
