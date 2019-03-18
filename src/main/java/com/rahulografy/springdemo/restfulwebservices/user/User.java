@@ -2,15 +2,22 @@ package com.rahulografy.springdemo.restfulwebservices.user;
 
 import javax.validation.constraints.Size;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(description="Model contains user related data")
 public class User {
 
-	@Size(min=1, message = "'Id' should have atleast 1 characters")
+	@ApiModelProperty(notes="'id' should have atleast 1 character")
+	@Size(min=1, message = "'id' should have atleast 1 character")
 	private String id;
 	
-	@Size(min=2, message = "'Name' should have atleast 2 characters")
+	@ApiModelProperty(notes="'name' should have atleast 2 characters")
+	@Size(min=2, message = "'name' should have atleast 2 characters")
 	private String name;
 	
-	@Size(min=1, message = "'Address' should have atleast 1 character")
+	@ApiModelProperty(notes="'address' should have atleast 1 character")
+	@Size(min=1, message = "'address' should have atleast 1 character")
 	private String address;
 
 	public User(String id, String name, String address) {
