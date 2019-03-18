@@ -3,7 +3,7 @@ package com.rahulografy.springdemo.restfulwebservices.filtering;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(value = { "value1" })
-public class SomePojo {
+public class PojoFilteringStatic {
 
 	// @JsonIgnore
 	private String value1;
@@ -12,7 +12,7 @@ public class SomePojo {
 
 	private String value3;
 
-	public SomePojo(String value1, String value2, String value3) {
+	public PojoFilteringStatic(String value1, String value2, String value3) {
 		super();
 		this.value1 = value1;
 		this.value2 = value2;
