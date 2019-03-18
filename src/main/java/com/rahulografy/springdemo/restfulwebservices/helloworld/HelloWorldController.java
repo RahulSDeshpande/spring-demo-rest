@@ -11,7 +11,7 @@ public class HelloWorldController {
 	public HelloWorldPojo helloWorldPojo() {
 		return new HelloWorldPojo("hello", "world", "pojo");
 	}
-	
+
 	@GetMapping(path = "/helloWorldPojo/{name}")
 	public HelloWorldPojo helloWorldPojo(@PathVariable String name) {
 		return new HelloWorldPojo("hello", "world", name);
