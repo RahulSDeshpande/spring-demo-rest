@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.rahulografy.springdemo.restfulwebservices.exception.PostNotFoundRuntimeException;
 import com.rahulografy.springdemo.restfulwebservices.exception.UserNotFoundRuntimeException;
 
 @RestController
@@ -46,29 +47,16 @@ public class UserJpaController {
 
 	@GetMapping(path = "/jpa/user/{id}")
 	public User getUser(@PathVariable String id) {
-		final Optional<User> user = userRepo.findById(id);
-
-		if (!user.isPresent())
-			throw new UserNotFoundRuntimeException("User with the id '" + id + "' not found!");
-
-		return user.get();
-	}
-
-	@DeleteMapping(path = "/jpa/deleteUser/{id}")
-	public void deleteUser(@PathVariable String id) {
-		userRepo.deleteById(id);
-	}
-
-	@GetMapping(path = "/jpa/users/{id}/posts")
-	public List<Post> getAllPostsForUser(@PathVariable String id) {
 		final Optional<User> userOptional = userRepo.findById(id);
 
 		if (!userOptional.isPresent())
 			throw new UserNotFoundRuntimeException("User with the id '" + id + "' not found!");
 
-		if (userOptional.get().getPosts().isEmpty())
-			throw new UserNotFoundRuntimeException("No post found for the user with the id '" + id + "'!");
+		return userOptional.get();
+	}
 
-		return userOptional.get().getPosts();
+	@DeleteMapping(path = "/jpa/deleteUser/{id}")
+	public void deleteUser(@PathVariable String id) {
+		userRepo.deleteById(id);
 	}
 }
